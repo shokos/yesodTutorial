@@ -12,3 +12,12 @@ import Database.Persist.Quasi
 -- http://www.yesodweb.com/book/persistent/
 share [mkPersist sqlSettings, mkMigrate "migrateAll"]
     $(persistFileWith lowerCaseSettings "config/models")
+
+data Color = Black | Red | Blue
+    deriving (Show, Read, Eq, Ord, Enum, Bounded)
+
+data Size = Normal | Big | Small
+    deriving (Show, Read, Eq, Ord, Enum, Bounded)
+
+derivePersistField "Color"
+derivePersistField "Size" 
